@@ -1,4 +1,9 @@
 <?php 
-require_once __DIR__ ."/vendor/autoload.php";
+use App\App;
 
-dd("Hello, World");
+require_once __DIR__ ."/vendor/autoload.php";
+define("APP_PATH", __DIR__);
+
+
+$app =  new App;
+$app->run();
