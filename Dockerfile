@@ -6,14 +6,11 @@ RUN apt-get update && apt-get install -y \
     libfreetype6-dev \
     curl \
     unzip \
+    zlib1g-dev \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install gd mysqli pdo pdo_mysql
 
-COPY ./src /var/www/html
-
-RUN chown -R www-data:www-data /var/www/html \
-    && chmod -R 755 /var/www/html
-
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 RUN a2enmod rewrite
 
