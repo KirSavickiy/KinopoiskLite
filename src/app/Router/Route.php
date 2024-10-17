@@ -3,6 +3,11 @@
 namespace App\Router;
 class Route
 {
+    private array $routes = [
+        "GET"=> [],
+        "POST"=> [],
+    ];
+
     public function __construct(
         private string $uri,
         private string $method,
@@ -32,11 +37,5 @@ class Route
     public function getAction(): string
     {
         return $this->action;
-    }
-
-    public function execute(){
-        if (is_callable($this->action)) {
-            call_user_func($this->action);
-        }
     }
 }
